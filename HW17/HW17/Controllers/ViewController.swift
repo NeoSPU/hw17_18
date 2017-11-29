@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         changeColorAction = {
-            (screenColor: UIColor) in
+            [unowned self] (screenColor: UIColor) -> Void in
             self.view.backgroundColor = screenColor
             self.nextButton.backgroundColor = screenColor
         }
@@ -31,4 +31,6 @@ class ViewController: UIViewController {
     @IBAction func blueButtonPressed(_ sender: Any) {
         changeColorAction?(.blue)
     }
+    
+    deinit { print("Deinit") }
 }
